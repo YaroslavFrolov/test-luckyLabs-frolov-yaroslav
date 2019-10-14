@@ -30,7 +30,7 @@ export class Bullet {
 
 
       let collisionObjects = this.checkCollision();
-      collisionObjects.forEach(obj=>{
+      collisionObjects.length > 0 && collisionObjects.forEach(obj=>{
         this.app.stage.removeChild(obj);
       });
 

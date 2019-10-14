@@ -25,11 +25,13 @@ export let init = function() {
       });
 
 
-      for(let i = 1; i < 6; i++){
-        new Asteroid(resources, app, {
+      for(let i = 1; i <= 5; i++){
+        let asteroid = new Asteroid(resources, app, {
           x: i * 200,
           y: 0,
         });
+
+        asteroid.move(i);
       }
 
 

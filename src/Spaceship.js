@@ -55,11 +55,10 @@ export class Spaceship {
     if(keyCode !== 32) return null;
 
 
-    let bullet = new Bullet(this.app, {
+    new Bullet(this.app, {
       x: this.spaceship.x,
       y: this.app.renderer.height - this.spaceship.height,
     });
-
   }
 
 };
