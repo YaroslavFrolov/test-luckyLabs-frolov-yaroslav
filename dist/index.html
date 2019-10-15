@@ -4,16 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Concert+One&display=swap" rel="stylesheet">
   <title>Yaroslav Frolov</title>
   <style>
+    html, body{
+      background-color: #000;
+      text-align: center;
+    }
     canvas{
       background-image: url('/assets/background.png');
-      display: block;
-      margin: 0 auto;
+    }
+
+    button{
+      margin-top: 1em;
+      padding: 10px 1em;
+      letter-spacing: 1px;
+      background: none;
+      border: 2px solid #444;
+      height: 2.25em;
+      border-radius: 2.25em;
+      color: #444;
+      font-size: 1.25em;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: .1s;
+      outline: none;
+      cursor: pointer;
+      color: #2196F3;
+      border-color: #2196F3;
+    }
+
+    button:hover,
+    button:focus{
+      text-shadow: 0 0 7px #2196F3;
+      box-shadow: 0 0 15px #2196F3, inset 0 0 15px #2196F3;
     }
   </style>
 </head>
 <body>
+  <div id='app'></div>
+  <button onclick="location.reload()">reload game</button>
   <script src="main.js"></script>
 </body>
 </html>

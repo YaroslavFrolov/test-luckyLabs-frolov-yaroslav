@@ -79,7 +79,8 @@ export class Spaceship_singleton extends Object {
 
     this.countBulletsTxt = new PIXI.Text(`bullets: ${this.countBullets} / 10`, {
       fontSize: 24,
-      fill : 0xff1010,
+      fill : 0xff005b,
+      fontFamily: 'Concert One',
     });
 
     this.app.stage.addChild(this.countBulletsTxt);

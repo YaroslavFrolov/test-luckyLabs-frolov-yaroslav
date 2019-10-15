@@ -21,7 +21,8 @@ export let initTimer = app => {
 
     timerTxt = new PIXI.Text(currentTimer, {
       fontSize: 24,
-      fill : 0xff1010,
+      fill : 0xff005b,
+      fontFamily: 'Concert One',
     });
 
     timerTxt.x = app.renderer.width - 28;

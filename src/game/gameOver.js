@@ -12,7 +12,8 @@ export let gameOver = (message, app) => {
 
   let messageTxt = new PIXI.Text(message, {
     fontSize: FONT_SIZE,
-    fill : 0xff1010,
+    fill : 0xff005b,
+    fontFamily: 'Concert One',
   });
 
   messageTxt.x = app.renderer.width / 2 - messageTxt.width / 2;

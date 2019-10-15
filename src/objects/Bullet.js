@@ -11,7 +11,7 @@ export class Bullet extends Object {
 
     this.app = app;
 
-    this.object.beginFill(0x008000);
+    this.object.beginFill(0x00E676);
     this.object.drawCircle(0, 0, 12);
     this.object.endFill();
     this.object.x = position.x;
