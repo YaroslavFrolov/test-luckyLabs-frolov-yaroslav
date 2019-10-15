@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { Bullet } from './Bullet';
 import { Object } from './Object';
+import { gameOver } from '../game/gameOver';
 
 
 export class Spaceship_singleton extends Object {
@@ -22,6 +23,7 @@ export class Spaceship_singleton extends Object {
 
     app.stage.addChild(this.object);
     this.updateCountBullets();
+    this.checkCollision();
 
 
     document.addEventListener('keydown', e => {
@@ -84,6 +86,29 @@ export class Spaceship_singleton extends Object {
     });
 
     this.app.stage.addChild(this.countBulletsTxt);
+  }
+
+
+
+  checkCollision(){
+    let asteroids = this.app.stage.children.filter(child=>child.name === 'asteroid');
+
+
+    this.app.ticker.add(delta => {
+      let isExistCollision = asteroids.some(asteroid=>{
+        let { tx: asteroidX, ty: asteroidY } = asteroid.transform.worldTransform;
+
+        if(
+          ( this.object.x >= (asteroidX-asteroid.width/2) ) &&
+          ( this.object.x <= (asteroidX+asteroid.width/2) ) &&
+          ( this.object.y-(this.object.height/2) <= (asteroidY+asteroid.height/2) )
+        ){
+          return true;
+        }
+      });
+
+      isExistCollision && gameOver('YOU LOSE', this.app);
+    });
   }
 
 };
