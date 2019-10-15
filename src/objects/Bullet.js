@@ -9,9 +9,6 @@ export class Bullet extends Object {
       name: 'bullet',
     });
 
-
-    this.app = app;
-
     this.object.beginFill(0x00E676);
     this.object.drawCircle(0, 0, 12);
     this.object.endFill();

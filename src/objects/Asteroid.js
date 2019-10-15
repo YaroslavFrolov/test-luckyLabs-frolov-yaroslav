@@ -12,8 +12,6 @@ export class Asteroid extends Object{
       texture: resources.asteroid.texture,
     });
 
-    this.app = app;
-
     this.object.x = settings.idx * 200;
     this.object.y = getRandomIntInclusive(-50, 100);
 

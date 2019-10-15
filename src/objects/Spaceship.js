@@ -13,9 +13,8 @@ export class Spaceship_singleton extends Object {
       texture: resources.spaceship.texture,
     });
 
-    this.app = app;
-    this.countBullets = 10;
 
+    this.countBullets = 10;
     this.object.x = app.renderer.width / 2;
     this.object.y = app.renderer.height - this.object.height/2;
 
@@ -93,6 +92,7 @@ export class Spaceship_singleton extends Object {
 
   checkCollision(){
     let asteroids = this.app.stage.children.filter(child=>child.name === 'asteroid');
+    let spaceShip = this.object;
 
 
     this.app.ticker.add(delta => {
@@ -100,9 +100,9 @@ export class Spaceship_singleton extends Object {
         let { tx: asteroidX, ty: asteroidY } = asteroid.transform.worldTransform;
 
         if(
-          ( this.object.x >= (asteroidX-asteroid.width/2) ) &&
-          ( this.object.x <= (asteroidX+asteroid.width/2) ) &&
-          ( this.object.y-(this.object.height/2) <= (asteroidY+asteroid.height/2) )
+          ( spaceShip.x >= (asteroidX-asteroid.width/2) ) &&
+          ( spaceShip.x <= (asteroidX+asteroid.width/2) ) &&
+          ( spaceShip.y-(spaceShip.height/2) <= (asteroidY+asteroid.height/2) )
         ){
           return true;
         }
