@@ -5,6 +5,7 @@ export class Bullet extends Object {
 
   constructor(app, position){
     super({
+      app,
       name: 'bullet',
     });
 
@@ -16,8 +17,6 @@ export class Bullet extends Object {
     this.object.endFill();
     this.object.x = position.x;
     this.object.y = position.y - this.object.width;
-
-    app.stage.addChild(this.object);
 
     this.move();
   }
@@ -32,10 +31,7 @@ export class Bullet extends Object {
       }
 
 
-      let collisionObjects = this.checkCollision();
-      collisionObjects.length > 0 && collisionObjects.forEach(obj=>{
-        this.app.stage.removeChild(obj);
-      });
+      this.checkCollision();
 
 
       let newPosY = this.object.y - 5;
@@ -46,29 +42,26 @@ export class Bullet extends Object {
 
 
   checkCollision(){
-    let collisionObjects = [];
+    let asteroids = this.app.stage.children.filter(child=>child.name === 'asteroid');
+    let bullet = this.object;
 
-
-    for(let i = 0; i < this.app.stage.children.length; i++){
-
-      if( this.app.stage.children[i].name !== 'asteroid' ) continue;
-
-      let asteroid = this.app.stage.children[i];
+    let collisionAsteroid = asteroids.find(asteroid=>{
       let { tx: asteroidX, ty: asteroidY } = asteroid.transform.worldTransform;
 
       if(
-        ( this.object.x >= (asteroidX-asteroid.width/2) ) &&
-        ( this.object.x <= (asteroidX+asteroid.width/2) ) &&
-        ( this.object.y <= (asteroidY+asteroid.height/2) )
+        ( bullet.x >= (asteroidX-asteroid.width/2) ) &&
+        ( bullet.x <= (asteroidX+asteroid.width/2) ) &&
+        ( bullet.y-(bullet.height/2) <= (asteroidY+asteroid.height/2) )
       ){
-        collisionObjects.push(this.object);
-        collisionObjects.push(asteroid);
-        break;
+        return true;
       }
+    });
+
+
+    if(collisionAsteroid){
+      this.app.stage.removeChild(collisionAsteroid);
+      this.app.stage.removeChild(bullet);
     }
-
-
-    return collisionObjects;
   }
 
 

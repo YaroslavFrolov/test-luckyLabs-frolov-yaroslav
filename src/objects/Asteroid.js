@@ -7,6 +7,7 @@ export class Asteroid extends Object{
 
   constructor(resources, app, settings){
     super({
+      app,
       name: 'asteroid',
       texture: resources.asteroid.texture,
     });
@@ -15,10 +16,6 @@ export class Asteroid extends Object{
 
     this.object.x = settings.idx * 200;
     this.object.y = getRandomIntInclusive(-50, 100);
-    this.object.anchor.x = 0.5;
-    this.object.anchor.y = 0.5;
-
-    app.stage.addChild(this.object);
 
     this.move(settings.idx);
   }

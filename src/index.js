@@ -30,10 +30,8 @@ import { checkIfWin } from './game/checkIfWin';
 
       new Spaceship_singleton(resources, app);
 
-      //document.body.appendChild(app.view);
+
       document.getElementById('app').appendChild(app.view);
-
-
 
       initTimer(app);
 

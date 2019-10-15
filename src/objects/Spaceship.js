@@ -8,6 +8,7 @@ export class Spaceship_singleton extends Object {
 
   constructor(resources, app){
     super({
+      app,
       name: 'spaceship',
       texture: resources.spaceship.texture,
     });
@@ -17,12 +18,9 @@ export class Spaceship_singleton extends Object {
 
     this.object.x = app.renderer.width / 2;
     this.object.y = app.renderer.height - this.object.height/2;
-    this.object.anchor.x = 0.5;
-    this.object.anchor.y = 0.5;
 
 
-    app.stage.addChild(this.object);
-    this.updateCountBullets();
+    this.renderCountBullets();
     this.checkCollision();
 
 
@@ -62,7 +60,10 @@ export class Spaceship_singleton extends Object {
     //space
     if(keyCode !== 32) return null;
 
-    if(this.countBullets < 1) return null;
+    if(this.countBullets < 1) {
+      gameOver('YOU LOSE', this.app);
+      return null;
+    }
 
 
     new Bullet(this.app, {
@@ -71,18 +72,18 @@ export class Spaceship_singleton extends Object {
     });
 
     this.countBullets--;
-    this.updateCountBullets();
+    this.renderCountBullets();
   }
 
 
 
-  updateCountBullets(){
+  renderCountBullets(){
     this.app.stage.removeChild(this.countBulletsTxt);
 
     this.countBulletsTxt = new PIXI.Text(`bullets: ${this.countBullets} / 10`, {
+      fontFamily: 'Concert One',
       fontSize: 24,
       fill : 0xff005b,
-      fontFamily: 'Concert One',
     });
 
     this.app.stage.addChild(this.countBulletsTxt);
