@@ -1,6 +1,6 @@
 # Тестовое задание Ярослав Фролов
 
-![game example](https://github.com/YaroslavFrolov/test-sayo-frolov-yaroslav/blob/master/example.jpg "game example")
+![game example](https://raw.githubusercontent.com/YaroslavFrolov/test-luckyLabs-frolov-yaroslav/master/example.jpg "game example")
 
 - Создать примитивную игру с космическим кораблём, сбивающим астероиды, используя следующие технологии: HTML, JavaScript (ES2018 ...), PIXI.js;
 - Размер холста 1280 х 720;
